@@ -50,3 +50,7 @@ ENV/
 
 # auto generated docs
 doc.html
+
+db.sqlite3
+static/
+media/
