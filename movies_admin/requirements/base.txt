@@ -10,3 +10,4 @@ six==1.16.0
 sqlparse==0.4.1
 Pillow==8.3.1
 sorl-thumbnail==12.7.0
+djangorestframework==3.12.4
