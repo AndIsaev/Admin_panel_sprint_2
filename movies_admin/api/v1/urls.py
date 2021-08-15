@@ -4,8 +4,8 @@ from api.v1.views import MoviesAPIView
 
 router = DefaultRouter()
 
-router.register(r'movies', MoviesAPIView, basename='movies')
+router.register(r"movies", MoviesAPIView, basename="movies")
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path("", include(router.urls)),
 ]

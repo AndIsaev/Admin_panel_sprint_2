@@ -16,15 +16,33 @@ class FilmWorkGenreInline(admin.TabularInline):
 
 @admin.register(FilmWork)
 class FilmWorkAdmin(admin.ModelAdmin):
-    list_display = ("title", "type", "rating", "creation_date", "updated_at", )
-    list_filter = ("type", )
-    search_fields = ("title", "rating", )
+    list_display = (
+        "title",
+        "type",
+        "rating",
+        "creation_date",
+        "updated_at",
+    )
+    list_filter = ("type",)
+    search_fields = (
+        "title",
+        "rating",
+    )
     fieldsets = (
-        ("Общее", {"fields": ("title", "type", "description", )}),
-        ("Дата создания фильма", {"fields": ("creation_date", )}),
-        ("Сертификат", {"fields": ("certificate", )}),
-        ("Рейтинг фильма", {"fields": ("rating", )}),
-        ("Файл", {"fields": ("file_path", )}),
+        (
+            "Общее",
+            {
+                "fields": (
+                    "title",
+                    "type",
+                    "description",
+                )
+            },
+        ),
+        ("Дата создания фильма", {"fields": ("creation_date",)}),
+        ("Сертификат", {"fields": ("certificate",)}),
+        ("Рейтинг фильма", {"fields": ("rating",)}),
+        ("Файл", {"fields": ("file_path",)}),
     )
 
     inlines = [PersonRoleInline, FilmWorkGenreInline]
@@ -32,7 +50,12 @@ class FilmWorkAdmin(admin.ModelAdmin):
 
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ("full_name", "birth_date", "created_at", "updated_at", )
+    list_display = (
+        "full_name",
+        "birth_date",
+        "created_at",
+        "updated_at",
+    )
     search_fields = ("full_name",)
     fields = (
         "full_name",
@@ -42,7 +65,12 @@ class PersonAdmin(admin.ModelAdmin):
 
 @admin.register(Genre)
 class GenreAdmin(admin.ModelAdmin):
-    list_display = ("name", "description", "created_at", "updated_at", )
+    list_display = (
+        "name",
+        "description",
+        "created_at",
+        "updated_at",
+    )
     search_fields = ("name",)
     fields = (
         "name",

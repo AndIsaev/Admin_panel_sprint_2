@@ -3,7 +3,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
-@receiver(post_save, sender='movies.Person')
+@receiver(post_save, sender="movies.Person")
 def congratulatory(sender, instance, created, **kwargs):
     print(instance)
     print(created)

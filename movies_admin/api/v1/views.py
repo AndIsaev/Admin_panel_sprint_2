@@ -5,9 +5,9 @@ from .serializers import MoviesSerializer
 from movies.models import FilmWork
 
 
-class MoviesAPIView(mixins.ListModelMixin,
-                    mixins.RetrieveModelMixin,
-                    viewsets.GenericViewSet):
+class MoviesAPIView(
+    mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet
+):
 
     serializer_class = MoviesSerializer
 
@@ -17,22 +17,19 @@ class MoviesAPIView(mixins.ListModelMixin,
         ).annotate(
             actors=ArrayAgg(
                 "persons__full_name",
-                filter=Q(person_film_work__role='actor'),
-                distinct=True
+                filter=Q(person_film_work__role="actor"),
+                distinct=True,
             ),
             directors=ArrayAgg(
                 "persons__full_name",
-                filter=Q(person_film_work__role='director'),
-                distinct=True
+                filter=Q(person_film_work__role="director"),
+                distinct=True,
             ),
             writers=ArrayAgg(
                 "persons__full_name",
-                filter=Q(person_film_work__role='writer'),
-                distinct=True
+                filter=Q(person_film_work__role="writer"),
+                distinct=True,
             ),
-            genres=ArrayAgg(
-                "genres__name",
-                distinct=True
-            ),
+            genres=ArrayAgg("genres__name", distinct=True),
         )
         return queryset

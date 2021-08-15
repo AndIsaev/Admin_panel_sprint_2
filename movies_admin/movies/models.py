@@ -40,8 +40,12 @@ class Genre(Time):
     class Meta:
         db_table = "genre"
         ordering = ("-updated_at",)
-        verbose_name = _("genre", )
-        verbose_name_plural = _("genres", )
+        verbose_name = _(
+            "genre",
+        )
+        verbose_name_plural = _(
+            "genres",
+        )
 
     def __str__(self):
         return self.name
@@ -177,7 +181,13 @@ class PersonFilmWork(models.Model):
 
     class Meta:
         db_table = "person_film_work"
-        unique_together = (("film_work", "person", "role",),)
+        unique_together = (
+            (
+                "film_work",
+                "person",
+                "role",
+            ),
+        )
 
 
 class FilmWorkGenre(models.Model):
@@ -208,5 +218,6 @@ class FilmWorkGenre(models.Model):
         constraints = [
             UniqueConstraint(
                 fields=["film_work", "genre"],
-                name="unique_film_genre", )
+                name="unique_film_genre",
+            )
         ]
