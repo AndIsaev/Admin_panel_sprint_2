@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "*",
@@ -72,6 +72,19 @@ DATABASES = {
         "OPTIONS": {"options": "-c search_path=content,public"},
     }
 }
+
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": 'django.db.backends.postgresql_psycopg2',
+#         "NAME": 'yandex',
+#         "USER": 'postgres',
+#         "PASSWORD": 'postgres',
+#         "HOST": 'localhost',
+#         "PORT": '5432',
+#         "OPTIONS": {"options": "-c search_path=content,public"},
+#     }
+# }
 
 
 AUTH_PASSWORD_VALIDATORS = [
