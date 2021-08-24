@@ -1,12 +1,12 @@
-# создать образ на основе базового слоя python (там будет ОС и интерпретатор Python)
+# pull official base image
 FROM python:3.9.5
-
-# создать директорию /code
+# set work directory
 RUN mkdir /code
 WORKDIR /code
-
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-# скопировать файл requirements.txt из директории, в которой лежит докерфайл, в директорию /code
+# install dependencies
 COPY requirements/base.txt /code
 COPY requirements/dev.txt /code
 COPY requirements/production.txt /code
@@ -15,11 +15,9 @@ RUN python -m pip install --upgrade pip
 RUN pip3 install -r /code/base.txt
 RUN pip3 install -r /code/dev.txt
 RUN pip3 install -r /code/production.txt
-COPY . /code
-RUN ["chmod", "+x", "./entrypoint.sh"]
+# copy project
+COPY ./entrypoint.sh .
+
+COPY . .
+
 ENTRYPOINT ["./entrypoint.sh"]
-# скопировать всё содержимое директории, в которой лежит докерфайл, в директорию /code
-
-
-
-# при старте контейнера выполнить runserver 
