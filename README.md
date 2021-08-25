@@ -1,3 +1,44 @@
+# Installation
+
+- clone project:
+```
+git@github.com:AndIsaev/Admin_panel_sprint_2.git
+```
+- create new database postgresql in your host
+
+- create file in .env with parametrs your database in movies_admin:
+
+```
+DB_ENGINE=django.db.backends.postgresql_psycopg2
+DB_NAME=db
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=some_password
+DB_HOST=host.docker.internal (if you use macos) or 'localhost'
+DB_PORT=5432
+SECRET_KEY= 'your secret key' 
+```
+
+- run command:
+```
+docker compose up 
+```
+
+- create superuser:
+```
+docker-compose exec web python manage.py collectstatic --noinput --clear
+```
+
+- load static
+```
+docker-compose run --entrypoint="/bin/bash -c" web "python manage.py createsuperuser"
+```
+
+- go to url in your browser:
+```
+http://localhost/admin/
+```
+
+
 # Техническое задание
 
 В качестве второго задания предлагаем расширить проект «Панель администратора»: запустить приложение через WSGI/ASGI, настроить отдачу статических файлов через Nginx и подготовить инфраструктуру для работы с Docker. Для этого перенесите в репозиторий код, который вы написали в первом спринте, и выполните задания из папки `tasks`.
