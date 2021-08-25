@@ -4,7 +4,7 @@ from django.core.management.base import BaseCommand
 import factory
 from faker import Faker
 from factory.django import DjangoModelFactory
-from ...models import Genre, PersonRole, FilmWork, PersonFilmWork, FilmWorkGenre
+from ...models import Genre, Person, FilmWork, PersonFilmWork, FilmWorkGenre
 
 data_persons = []
 data_films = []
@@ -35,7 +35,7 @@ def create_manytomany_list(model, data_space):
 
 def get_queryset_person():
     """return queryset from PersonRole model."""
-    return PersonRole.objects.get(id=data_persons[random.randint(0, 99999)].id)
+    return Person.objects.get(id=data_persons[random.randint(0, 99999)].id)
 
 
 def get_queryset_genres():
@@ -78,7 +78,7 @@ class GenreFactory(DjangoModelFactory):
 
 class PersonRoleFactory(DjangoModelFactory):
     class Meta:
-        model = PersonRole
+        model = Person
 
     id = factory.Faker("uuid4")
     full_name = factory.Faker("name")
@@ -121,11 +121,11 @@ class Command(BaseCommand):
         print("started filling in the database")
         create_new_objects(GenreFactory, Genre, 10)
         print("create 10 new genres")
-        create_new_objects(PersonRoleFactory, PersonRole, 100000)
+        create_new_objects(PersonRoleFactory, Person, 100000)
         print("create 100000 new persons")
         create_new_objects(FilmWorkFactory, FilmWork, 1000000)
         print("create 1000000 new films")
-        create_manytomany_list(PersonRole, data_persons)
+        create_manytomany_list(Person, data_persons)
         print("create list persons")
         create_manytomany_list(FilmWork, data_films)
         print("create list films")
