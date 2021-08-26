@@ -18,7 +18,7 @@ DB_PORT=5432
 SECRET_KEY= 'your secret key' 
 ```
 
-- run command:
+- go to movies_admin and run command:
 ```
 docker compose up 
 ```
