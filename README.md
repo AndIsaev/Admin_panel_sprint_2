@@ -6,7 +6,7 @@ git@github.com:AndIsaev/Admin_panel_sprint_2.git
 ```
 - create new database postgresql in your host
 
-- create file in .env with parametrs your database in movies_admin:
+- create file .env with parametrs your database in movies_admin:
 
 ```
 DB_ENGINE=django.db.backends.postgresql_psycopg2
