@@ -189,6 +189,9 @@ class PersonFilmWork(models.Model):
             ),
         )
 
+    def __str__(self):
+        return str(self.person)
+
 
 class FilmWorkGenre(models.Model):
     id = models.UUIDField(
